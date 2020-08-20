@@ -6,4 +6,4 @@ before_install:
     - docker build -t challa/docker-react -f Dockerfile.dev .
 
 script:
-    - docker run challa/docker-react npm run test -- --coverage
+    - docker run -e CI=true challa/docker-react npm run test
