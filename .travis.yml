@@ -7,3 +7,16 @@ before_install:
 
 script:
     - docker run -e CI=true challa/docker-react npm run test
+
+deploy:
+    provide: elasticbeanstalk
+    region: "eu-west-1"
+    app: "docker"
+    env: "Docker-env"
+    bucket_name: "elasticbeanstalk-eu-west-1-158259985846"
+    bucket_path: "docker"
+    on:
+        branch: master
+    Access_key_ID: $AWS_ACCESS_KEY
+    Secret_access_key:
+        secure: "$AWS_SECRET_KEY"
